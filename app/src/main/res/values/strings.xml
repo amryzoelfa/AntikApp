@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ANTIK</string>
+    <string name="userText">Username</string>
+    <string name="paslam">Password Lama</string>
+    <string name="pasnew">Password Baru</string>
+    <string name="conpas">Konfirmasi Password Baru</string>
+    <string name="passwordText">Password</string>
+    <string name="loginText">LOGIN</string>
+    <string name="keluarText">KELUAR</string>
+    <string name="passText">GANTI PASSWORD</string>
+    <string name="batal">BATAL</string>
+    <string name="eproText">EDIT PROFIL</string>
+    <string name="outText">LOGOUT</string>
+    <string name="antriText">AMBIL ANTRIAN</string>
+    <string name="informasi">Informasi Antrian</string>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="purple700">#3700B3</color>
+    <color name="twitter">#43acee</color>
+    <color name="putih">#FFFFFF</color>
+    <color name="abu_tua">#525151</color>
+    <color name="biru">#59909E</color>
+    <color name="abu">#CAC7C7</color>
+    <color name="hitam">#ff000000</color>
+    <color name="merah">#ffff0000</color>
+    <color name="lightturquoise">#ffccffff</color>
+</resources>
