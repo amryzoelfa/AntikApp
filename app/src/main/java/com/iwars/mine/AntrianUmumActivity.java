@@ -12,41 +12,51 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.iwars.mine.Adapter.AdapterDokter;
-import com.iwars.mine.Model.ModelDokter;
+import com.iwars.mine.Adapter.AdapterListGigi;
+import com.iwars.mine.Adapter.AdapterListUmum;
+import com.iwars.mine.Model.ModelListGigi;
+import com.iwars.mine.Model.ModelListUmum;
 import com.iwars.mine.Util.AppController;
 import com.iwars.mine.Util.ServerAPI;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class DokterActivity extends AppCompatActivity {
+public class AntrianUmumActivity extends AppCompatActivity {
 
     RecyclerView mRecyclerview;
     RecyclerView.Adapter mAdapter;
     RecyclerView.LayoutManager mManager;
-    List<ModelDokter> mItems;
+    List<ModelListUmum> mItems;
     ProgressDialog pd;
+    SessionManager sessionManager;
+
+    private String mId_user, mNama;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dokter);
+        setContentView(R.layout.activity_antrian_umum);
 
-        mRecyclerview = (RecyclerView) findViewById(R.id.recyclerviewDokter);
-        pd = new ProgressDialog(DokterActivity.this);
+        sessionManager = new SessionManager(this);
+        sessionManager.checkLogin();
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        mId_user = user.get(sessionManager.ID_USER);
+
+        mRecyclerview = (RecyclerView) findViewById(R.id.recyclerviewUmum);
+        pd = new ProgressDialog(AntrianUmumActivity.this);
         mItems = new ArrayList<>();
 
         loadJson();
 
-        mManager = new LinearLayoutManager(DokterActivity.this,LinearLayoutManager.VERTICAL,false);
+        mManager = new LinearLayoutManager(AntrianUmumActivity.this,LinearLayoutManager.VERTICAL,false);
         mRecyclerview.setLayoutManager(mManager);
-        mAdapter = new AdapterDokter(DokterActivity.this,mItems);
+        mAdapter = new AdapterListUmum(AntrianUmumActivity.this,mItems);
         mRecyclerview.setAdapter(mAdapter);
 
     }
@@ -57,7 +67,7 @@ public class DokterActivity extends AppCompatActivity {
         pd.setCancelable(false);
         pd.show();
 
-        JsonArrayRequest reqData = new JsonArrayRequest(Request.Method.POST, ServerAPI.URL_DOKTER,null,
+        JsonArrayRequest reqData = new JsonArrayRequest(Request.Method.POST, ServerAPI.LIST_UMUM,null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -67,13 +77,11 @@ public class DokterActivity extends AppCompatActivity {
                         {
                             try {
                                 JSONObject data = response.getJSONObject(i);
-                                ModelDokter md = new ModelDokter();
-                                md.setFoto("http://192.168.43.34/CIANTIK/assets/img/" + data.getString("foto"));
+                                ModelListUmum md = new ModelListUmum();
+                                //md.setTanggal(data.getString("tanggal"));
+                                md.setNo_antrian(data.getString("no_antrian"));
                                 md.setNama(data.getString("nama"));
-                                md.setJenis_kelamin(data.getString("jenis_kelamin"));
-                                md.setNo_hp(data.getString("no_hp"));
-                                md.setAlamat(data.getString("alamat"));
-                                md.setKet_akses(data.getString("ket_akses"));
+                                md.setKet_status(data.getString("ket_status"));
                                 mItems.add(md);
                             } catch (JSONException e) {
                                 e.printStackTrace();

@@ -22,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class RiwayatActivity extends AppCompatActivity {
@@ -31,11 +32,19 @@ public class RiwayatActivity extends AppCompatActivity {
     RecyclerView.LayoutManager mManager;
     List<ModelRiwayat> mItems;
     ProgressDialog pd;
+    SessionManager sessionManager;
+
+    private String mId_user, mNama;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_riwayat);
+
+        sessionManager = new SessionManager(this);
+        sessionManager.checkLogin();
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        mId_user = user.get(sessionManager.ID_USER);
 
         mRecyclerview = (RecyclerView) findViewById(R.id.recyclerviewRiwayat);
         pd = new ProgressDialog(RiwayatActivity.this);

@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/foto"
+        android:id="@+id/ivfoto"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/user"
@@ -79,12 +79,60 @@
                         android:orientation="vertical">
 
                         <RelativeLayout
-                            android:id="@+id/linearLayout"
+                            android:id="@+id/linearLayout0"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
                             android:layout_marginLeft="24dp"
                             android:layout_marginTop="24dp"
+                            android:layout_marginEnd="24dp"
+                            android:layout_marginRight="24dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+                            <TextView
+                                android:id="@+id/textView0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentLeft="true"
+                                android:layout_gravity="left"
+                                android:text="No Identitas"
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/tvid"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_gravity="right"
+                                android:text="E31181295"
+                                android:textSize="15dp" />
+
+
+                        </RelativeLayout>
+
+                        <View
+                            android:id="@+id/view0"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="24dp"
+                            android:layout_marginRight="24dp"
+                            android:background="@color/abu_tua"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+                        <RelativeLayout
+                            android:id="@+id/linearLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginTop="8dp"
                             android:layout_marginEnd="24dp"
                             android:layout_marginRight="24dp"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -101,7 +149,7 @@
                                 android:textSize="15dp" />
 
                             <TextView
-                                android:id="@+id/nama"
+                                android:id="@+id/tvnama"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
@@ -128,97 +176,6 @@
 
 
                         <RelativeLayout
-                            android:id="@+id/linearLayout2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginLeft="24dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="24dp"
-                            android:layout_marginRight="24dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/view">
-
-                            <TextView
-                                android:id="@+id/textView3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentLeft="true"
-                                android:layout_gravity="left"
-                                android:text="TTL"
-                                android:textSize="15dp" />
-
-                            <TextView
-                                android:id="@+id/tanggal_lahir"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_gravity="right"
-                                android:text="Jember , 24 Maret 1999"
-                                android:textSize="15dp" />
-                        </RelativeLayout>
-
-                        <View
-                            android:id="@+id/baris3"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginLeft="24dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="24dp"
-                            android:layout_marginRight="24dp"
-                            android:background="@color/abu_tua"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
-                        <RelativeLayout
-                            android:id="@+id/relativeLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginLeft="24dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="24dp"
-                            android:layout_marginRight="24dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/baris3">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentLeft="true"
-                                android:layout_gravity="left"
-                                android:layout_marginLeft="0dp"
-                                android:text="Jenis Kelamin"
-                                android:textSize="15dp" />
-
-                            <TextView
-                                android:id="@+id/jenis_kelamin"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_gravity="right"
-                                android:text="L/P"
-                                android:textSize="15dp" />
-                        </RelativeLayout>
-
-                        <View
-                            android:id="@+id/baris4"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginLeft="24dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="24dp"
-                            android:layout_marginRight="24dp"
-                            android:background="@color/abu_tua"
-                            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"></View>
-
-                        <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="24dp"
@@ -229,7 +186,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/baris4">
+                            app:layout_constraintTop_toBottomOf="@+id/baris6">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -240,7 +197,7 @@
                                 android:textSize="15dp" />
 
                             <TextView
-                                android:id="@+id/alamat"
+                                android:id="@+id/tvalamat"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"

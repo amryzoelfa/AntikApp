@@ -12,4 +12,6 @@
     <color name="hitam">#ff000000</color>
     <color name="merah">#ffff0000</color>
     <color name="lightturquoise">#ffccffff</color>
+    <color name="gigi">#1cc88a</color>
+    <color name="umum">#4e73df</color>
 </resources>

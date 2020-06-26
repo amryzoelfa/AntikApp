@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private ProgressBar loading;
     private String URL_LOGIN;
 
-    SharedPreferences sharedPreferences;
+    //SharedPreferences sharedPreferences;
     boolean doubleBackToExitPressedOnce = false;
 
     SessionManager sessionManager;
@@ -58,28 +58,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         URL_LOGIN = login.getURL_LOGIN();
         initControl();
 
-//        editTextUsername = (EditText) findViewById(R.id.editTextUsername);
-//        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-//        buttonLogin = (Button) findViewById(R.id.buttonLogin);
-//        buttonKeluar = (Button) findViewById(R.id.buttonKeluar);
-//
-//        //sessionManager = new SessionManager(this);
-//        sharedPreferences = getSharedPreferences("DATA", Context.MODE_PRIVATE);
-//
-//        buttonLogin.setOnClickListener(new View.OnClickListener() {
-//            //mengaktifkan button untuk login
-//            @Override
-//            public void onClick(View view) {
-//                if (!editTextUsername.getText().toString().equals("") || !editTextPassword.getText().toString().equals(""))
-//                {
-//                    postLogin();
-//                }
-//                else
-//                {
-//                    Toast.makeText(LoginActivity.this,"Username atau Password belum terisi", Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
     }
 
     private void  initControl(){
@@ -126,30 +104,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             JSONArray responArray = new JSONArray(response);
 
                             JSONObject data = responArray.getJSONObject(0);
-                            String username = data.getString("username");
-                            String id_akses = data.getString("id_akses");
+
                             String id_user = data.getString("id_user");
+                            String id_akses = data.getString("id_akses");
                             String no_identitas = data.getString("no_identitas");
-                            String nama = data.getString("nama").trim();
-                            String jenis_kelamin = data.getString("jenis_kelamin");
-                            String alamat = data.getString("alamat").trim();
-                            String tempat_lahir = data.getString("tempat_lahir");
-                            String tanggal_lahir = data.getString("tanggal_lahir");
-                            String no_hp = data.getString("no_hp");
+                            String nama = data.getString("nama");
+                            String alamat= data.getString("alamat");
+                            String username = data.getString("username");
                             String foto = data.getString("foto");
 
-                            sessionManager.createSession(username, nama, no_identitas, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat, no_hp, id_akses, id_user, foto);
+                            sessionManager.createSession(id_user, id_akses, nama, no_identitas, alamat, username, foto);
                             Intent intent = new Intent(LoginActivity.this, BerandaActivity.class);
-                            intent.putExtra("id_akses",id_akses);
                             intent.putExtra("id_user",id_user);
-                            intent.putExtra("username",username);
-                            intent.putExtra("nama",nama);
+                            intent.putExtra("id_akses",id_akses);
                             intent.putExtra("no_identitas",no_identitas);
-                            intent.putExtra("jenis_kelamin",jenis_kelamin);
-                            intent.putExtra("tempat_lahir",tempat_lahir);
-                            intent.putExtra("tanggal_lahir",tanggal_lahir);
-                            intent.putExtra("alamat",alamat);
-                            intent.putExtra("no_hp",no_hp);
+                            intent.putExtra("nama",nama);
+                            intent.putExtra("alamat", alamat);
+                            intent.putExtra("username",username);
                             intent.putExtra("foto",foto);
                             startActivity(intent);
                             progressDialog.dismiss();

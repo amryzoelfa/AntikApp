@@ -19,12 +19,12 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
     SessionManager sessionManager;
     //String username, nama, id_user, id_akses, foto;
 
-    private TextView id_user, nama, tanggal_lahir, alamat, jenis_kelamin;
+    private TextView id_user, no_identitas, nama, alamat;
     private Button editProfil, gantiPassword, logout;
     private ImageView foto;
     //SessionManager sessionManager;
 
-    private String mIduser, mNama,mJenisKelamin, mTanggalLahir, mAlamat, mFoto, URL_FOTO;
+    private String mIdUser, mAkses, mNoIdentitas, mNama, mUsername, mAlamat, mFoto, URL_FOTO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,18 +36,15 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
         HashMap<String, String> user = sessionManager.getUserDetail();
-        mIduser = user.get(sessionManager.ID_USER);
+        mNoIdentitas = user.get(sessionManager.NO_IDENTITAS);
         mNama = user.get(sessionManager.NAMA);
-        mJenisKelamin = user.get(sessionManager.JENIS_KELAMIN);
-        mTanggalLahir = user.get(sessionManager.TANGGAL_LAHIR);
         mAlamat = user.get(sessionManager.ALAMAT);
         mFoto = user.get(sessionManager.FOTO);
         URL_FOTO = "http://192.168.43.34/CIANTIK/assets/img/"+mFoto;
 
         //set nama dari session
+        no_identitas.setText(mNoIdentitas);
         nama.setText(mNama);
-        jenis_kelamin.setText(mJenisKelamin);
-        tanggal_lahir.setText(mTanggalLahir);
         alamat.setText(mAlamat);
         //set foto
         Glide.with(ProfilActivity.this)
@@ -61,11 +58,10 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void initControl() {
-        foto = (ImageView) findViewById(R.id.foto);
-        nama = (TextView) findViewById(R.id.nama);
-        jenis_kelamin = (TextView) findViewById(R.id.jenis_kelamin);
-        tanggal_lahir = (TextView) findViewById(R.id.tanggal_lahir);
-        alamat = (TextView) findViewById(R.id.alamat);
+        foto = (ImageView) findViewById(R.id.ivfoto);
+        no_identitas = (TextView) findViewById(R.id.tvid);
+        nama = (TextView) findViewById(R.id.tvnama);
+        alamat = (TextView) findViewById(R.id.tvalamat);
         editProfil = (Button) findViewById(R.id.editProfil);
         editProfil.setOnClickListener(this);
         gantiPassword = (Button) findViewById(R.id.gantiPassword);

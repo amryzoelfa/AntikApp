@@ -12,5 +12,6 @@
     <string name="eproText">EDIT PROFIL</string>
     <string name="outText">LOGOUT</string>
     <string name="antriText">AMBIL ANTRIAN</string>
+    <string name="lihatText">LIHAT ANTRIAN</string>
     <string name="informasi">Informasi Antrian</string>
 </resources>

@@ -15,7 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".vAntrianUmumActivity"></activity>
+        <activity android:name=".AntrianGigiActivity"></activity>
+        <activity android:name=".AntrianUmumActivity" />
+        <activity android:name=".vAntrianGigiActivity" />
+        <activity android:name=".vAntrianUmumActivity" />
         <activity android:name=".GantiPasswordActivity" />
         <activity android:name=".EditProfilActivity" />
         <activity android:name=".LoginActivity" />

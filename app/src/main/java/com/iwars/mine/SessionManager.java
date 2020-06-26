@@ -10,6 +10,7 @@ public class SessionManager {
     SharedPreferences sharedPreferences;
     public SharedPreferences.Editor editor;
     public Context context;
+    //int MODE_PRIVATE = 0;
 
     public static final String PREF_NAME = "LOGIN";
     public static final String LOGIN_STATUS = "false";
@@ -17,13 +18,7 @@ public class SessionManager {
     public static final String ID_AKSES = "ID_AKSES";
     public static final String NO_IDENTITAS = "NO_IDENTITAS";
     public static final String NAMA = "NAMA";
-    public static final String JENIS_KELAMIN = "JENIS_KELAMIN";
-    public static final String TEMPAT_LAHIR = "TEMPAT_LAHIR";
-    public static final String TANGGAL_LAHIR = "TANGGAL_LAHIR";
     public static final String ALAMAT = "ALAMAT";
-    public static final String PEKERJAAN = "PEKERJAAN";
-    public static final String NO_HP = "NO_HP";
-    public static final String EMAIL = "EMAIL";
     public static final String USERNAME = "USERNAME";
     public static final String FOTO = "FOTO";
 
@@ -33,29 +28,16 @@ public class SessionManager {
         editor = sharedPreferences.edit();
     }
 
-    public void createSession(String username, String id_user, String id_akses, String no_identitas, String nama, String jenis_kelamin, String alamat, String tanggal_lahir, String tempat_lahir, String no_hp, String foto) {
+    public void createSession(String id_user, String id_akses, String no_identitas, String nama, String alamat, String username, String foto) {
         editor.putBoolean(LOGIN_STATUS, true);
-        editor.putString(USERNAME, username);
-        editor.putString(NO_IDENTITAS, no_identitas);
-        editor.putString(NAMA, nama);
-        editor.putString(JENIS_KELAMIN, jenis_kelamin);
-        editor.putString(ALAMAT, alamat);
-        editor.putString(TANGGAL_LAHIR, tanggal_lahir);
-        editor.putString(TEMPAT_LAHIR, tempat_lahir);
-        editor.putString(NO_HP, no_hp);
         editor.putString(ID_USER, id_user);
         editor.putString(ID_AKSES, id_akses);
+        editor.putString(NO_IDENTITAS, no_identitas);
+        editor.putString(NAMA, nama);
+        editor.putString(ALAMAT, alamat);
+        editor.putString(USERNAME, username);
         editor.putString(FOTO, foto);
         editor.apply();
-    }
-
-    public void logout(){
-        editor.clear();
-        editor.commit();
-
-        Intent login = new Intent(context, LoginActivity.class);
-        context.startActivity(login);
-        ((ProfilActivity)context).finish();
     }
 
     public boolean isLogin(){
@@ -76,20 +58,21 @@ public class SessionManager {
         user.put(ID_AKSES,sharedPreferences.getString(ID_AKSES,null));
         user.put(NO_IDENTITAS,sharedPreferences.getString(NO_IDENTITAS,null));
         user.put(NAMA,sharedPreferences.getString(NAMA,null));
-        user.put(JENIS_KELAMIN,sharedPreferences.getString(JENIS_KELAMIN,null));
-        user.put(TEMPAT_LAHIR,sharedPreferences.getString(TEMPAT_LAHIR,null));
-        user.put(TANGGAL_LAHIR,sharedPreferences.getString(TANGGAL_LAHIR,null));
-        user.put(ALAMAT,sharedPreferences.getString(ALAMAT,null));
-        user.put(NO_HP,sharedPreferences.getString(NO_HP,null));
-        user.put(PEKERJAAN,sharedPreferences.getString(PEKERJAAN,null));
-        user.put(EMAIL,sharedPreferences.getString(EMAIL,null));
-        user.put(USERNAME,sharedPreferences.getString(USERNAME,null));
-        user.put(FOTO,sharedPreferences.getString(FOTO,null));
+        user.put(ALAMAT, sharedPreferences.getString(ALAMAT, null));
+        user.put(USERNAME,sharedPreferences.getString(USERNAME, null));
+        user.put(FOTO,sharedPreferences.getString(FOTO, null));
 
         return user;
     }
 
+    public void logout(){
+        editor.clear();
+        editor.commit();
 
+        Intent login = new Intent(context, LoginActivity.class);
+        context.startActivity(login);
+        ((ProfilActivity)context).finish();
+    }
 
 //    public String getUsername() {
 //        return sharedPreferences.getString(USERNAME, null);
