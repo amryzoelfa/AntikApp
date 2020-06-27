@@ -1,7 +1,7 @@
 package com.iwars.mine.Util;
 
 public class ServerAPI {
-    public static final String URL_RIWAYAT = "http://192.168.43.34/CIANTIK/Api/Riwayat";
+    public static final String URL_RIWAYAT = "http://192.168.43.34/CIANTIK/Api/Riwayat/";
     public static final String PROFIL_URL = "http://192.168.43.34/CIANTIK/Api/Profile/";
     private String URL_LOGIN = "http://192.168.43.34/CIANTIK/Api/LoginApi";
     //public static final String  URL_LOGIN = "http://192.168.43.34/CIANTIK/Api/LoginApi";

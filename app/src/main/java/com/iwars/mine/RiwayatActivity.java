@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -24,6 +25,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RiwayatActivity extends AppCompatActivity {
 
@@ -45,6 +47,7 @@ public class RiwayatActivity extends AppCompatActivity {
         sessionManager.checkLogin();
         HashMap<String, String> user = sessionManager.getUserDetail();
         mId_user = user.get(sessionManager.ID_USER);
+        mNama = user.get(sessionManager.NAMA);
 
         mRecyclerview = (RecyclerView) findViewById(R.id.recyclerviewRiwayat);
         pd = new ProgressDialog(RiwayatActivity.this);
@@ -65,7 +68,9 @@ public class RiwayatActivity extends AppCompatActivity {
         pd.setCancelable(false);
         pd.show();
 
-        JsonArrayRequest reqData = new JsonArrayRequest(Request.Method.POST, ServerAPI.URL_RIWAYAT,null,
+        String url = ServerAPI.URL_RIWAYAT + mId_user;
+
+        JsonArrayRequest reqData = new JsonArrayRequest(Request.Method.POST, url,null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -95,7 +100,16 @@ public class RiwayatActivity extends AppCompatActivity {
                         pd.cancel();
                         Log.d("volley", "error : " + error.getMessage());
                     }
-                });
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_user", mId_user);
+                params.put("nama", mNama);
+                return params;
+            }
+        };
 
         AppController.getInstance().addToRequestQueue(reqData);
     }
