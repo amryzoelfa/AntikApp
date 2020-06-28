@@ -1,7 +1,9 @@
 package com.iwars.mine;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,11 +13,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.iwars.mine.Model.ModelProfil;
+import com.iwars.mine.Model.ModelRiwayat;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class ProfilActivity extends AppCompatActivity implements View.OnClickListener {
 
+    RecyclerView mRecyclerview;
+    RecyclerView.Adapter mAdapter;
+    RecyclerView.LayoutManager mManager;
+    List<ModelProfil> mItems;
+    ProgressDialog pd;
     SessionManager sessionManager;
     //String username, nama, id_user, id_akses, foto;
 
@@ -24,7 +34,7 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
     private ImageView foto;
     //SessionManager sessionManager;
 
-    private String mIdUser, mID, mNama, mJk, mTTL, mNo, mUsername, mAlamat, mFoto, URL_FOTO;
+    //private String mIdUser, mID, mNama, mJk, mTTL, mNo, mUsername, mAlamat, mFoto, URL_FOTO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,19 +42,20 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_profil);
 
         initControl();
-        loadprofil();
 
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
         HashMap<String, String> user = sessionManager.getUserDetail();
-        mIdUser = user.get(sessionManager.ID_USER);
-        mFoto = user.get(sessionManager.FOTO);
-        URL_FOTO = "http://192.168.43.34/CIANTIK/assets/img/"+mFoto;
+        String mIdUser = user.get(sessionManager.ID_USER);
+        String mID = user.get(sessionManager.NO_IDENTITAS);
+        String mNama = user.get(sessionManager.NAMA);
+        String mJk = user.get(sessionManager.JENIS_KELAMIN);
+        String mTTL = user.get(sessionManager.TEMPAT_LAHIR) + "," + user.get(sessionManager.TANGGAL_LAHIR);
+        String mAlamat = user.get(sessionManager.ALAMAT);
+        String mNo = user.get(sessionManager.NO_HP);
+        String mFoto = user.get(sessionManager.FOTO);
+        String URL_FOTO = "http://192.168.43.34/CIANTIK/assets/img/"+mFoto;
 
-        //set nama dari session
-//        no_identitas.setText(mNoIdentitas);
-//        nama.setText(mNama);
-//        alamat.setText(mAlamat);
         //set foto
         Glide.with(ProfilActivity.this)
                 // LOAD URL DARI INTERNET
@@ -54,10 +65,12 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
                 //. LOAD GAMBAR SAAT TERJADI KESALAHAN MEMUAT GMBR UTAMA
                 .error(R.drawable.ic_account_circle_black_24dp)
                 .into(foto);
-    }
-
-    private void loadprofil() {
-
+        no_identitas.setText(mID);
+        nama.setText(mNama);
+        jenis_kelamin.setText(mJk);
+        ttl.setText(mTTL);
+        no_hp.setText(mNo);
+        alamat.setText(mAlamat);
     }
 
     private void initControl() {

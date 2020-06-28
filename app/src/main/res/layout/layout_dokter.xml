@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginStart="24dp"
     android:layout_marginLeft="24dp"
-    android:layout_marginTop="24dp"
+    android:layout_marginTop="8dp"
     android:layout_marginEnd="24dp"
     android:layout_marginRight="24dp"
     app:cardCornerRadius="20dp"
@@ -22,9 +22,9 @@
             android:id="@+id/nama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="24dp"
             android:layout_marginRight="181dp"
             android:text="INI NAMA DOKTER"
             android:textColor="@color/hitam"
@@ -45,8 +45,8 @@
 
             <ImageView
                 android:id="@+id/foto"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
@@ -57,6 +57,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
@@ -84,6 +85,20 @@
                 android:text="ini jenis kelamin"
                 android:textSize="15dp" />
         </RelativeLayout>
+
+        <View
+            android:id="@+id/view0"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@color/abu_tua"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout" />
 
         <RelativeLayout
             android:id="@+id/linearLayout2"
@@ -115,6 +130,20 @@
 
         </RelativeLayout>
 
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@color/abu_tua"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout2" />
+
         <RelativeLayout
             android:id="@+id/linearlayout4"
             android:layout_width="match_parent"
@@ -144,6 +173,20 @@
 
         </RelativeLayout>
 
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:background="@color/abu_tua"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearlayout4" />
+
         <RelativeLayout
             android:id="@+id/linearlayout6"
             android:layout_width="match_parent"
@@ -151,6 +194,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginLeft="24dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp">
             <TextView

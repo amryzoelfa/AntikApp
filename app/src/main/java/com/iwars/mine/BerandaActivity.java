@@ -23,7 +23,7 @@ public class BerandaActivity extends AppCompatActivity implements View.OnClickLi
     private ImageButton btnDokter, btnRiwayat, btnAntrian, btnProfil;
     private ImageView foto;
 
-    private String mId_user,mAkses, mId, mNama, mJk, mTempat, mTanggal, mAlamat, mNo, mUsername, mFoto, URL_FOTO;
+    //private String mId_user,mAkses, mId, mNama, mJk, mTempat, mTanggal, mAlamat, mNo, mUsername, mFoto, URL_FOTO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +35,9 @@ public class BerandaActivity extends AppCompatActivity implements View.OnClickLi
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
         HashMap<String, String> user = sessionManager.getUserDetail();
-        mNama = user.get(sessionManager.NAMA);
-        mFoto = user.get(sessionManager.FOTO);
-        URL_FOTO = "http://192.168.43.34/CIANTIK/assets/img/"+mFoto;
+        String mNama = user.get(sessionManager.NAMA);
+        String mFoto = user.get(sessionManager.FOTO);
+        String URL_FOTO = "http://192.168.43.34/CIANTIK/assets/img/"+mFoto;
 
         //set nama dari session
         username.setText(mNama);

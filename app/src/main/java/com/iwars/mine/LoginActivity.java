@@ -109,16 +109,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             String id_akses = data.getString("id_akses");
                             String no_identitas = data.getString("no_identitas");
                             String nama = data.getString("nama");
+                            String jenis_kelamin = data.getString("jenis_kelamin");
+                            String tempat_lahir = data.getString("tempat_lahir");
+                            String tanggal_lahir = data.getString("tanggal_lahir");
+                            String no_hp = data.getString("no_hp");
                             String alamat= data.getString("alamat");
                             String username = data.getString("username");
                             String foto = data.getString("foto");
 
-                            sessionManager.createSession(id_user, id_akses, nama, no_identitas, alamat, username, foto);
+                            sessionManager.createSession(id_user, id_akses, no_identitas, nama, jenis_kelamin, tempat_lahir, tanggal_lahir, no_hp, alamat, username, foto);
                             Intent intent = new Intent(LoginActivity.this, BerandaActivity.class);
                             intent.putExtra("id_user",id_user);
                             intent.putExtra("id_akses",id_akses);
                             intent.putExtra("no_identitas",no_identitas);
                             intent.putExtra("nama",nama);
+                            intent.putExtra("jenis_kelamin",jenis_kelamin);
+                            intent.putExtra("tempat_lahir",tempat_lahir);
+                            intent.putExtra("tanggal_lahir",tanggal_lahir);
+                            intent.putExtra("no_hp",no_hp);
                             intent.putExtra("alamat", alamat);
                             intent.putExtra("username",username);
                             intent.putExtra("foto",foto);
