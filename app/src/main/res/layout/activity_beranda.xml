@@ -33,18 +33,20 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Hallo!"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:text="Selamat Datang!"
                     android:fontFamily="@font/regular"
                     android:textColor="@color/putih"
-                    android:textSize="23dp"
+                    android:textSize="20dp"
                     android:textAlignment="center"/>
 
                 <TextView
                     android:id="@+id/tvNama"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="Nama Pengguna"
+                    android:fontFamily="@font/montserrat_bold"
                     android:textStyle="bold"
                     android:textColor="@color/putih"
                     android:textSize="30dp"
@@ -70,9 +72,11 @@
 
                 <ImageButton
                     android:id="@+id/btnDokter"
-                    android:layout_width="120dp"
+                    android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="20dp"
                     android:background="@drawable/home_button"
                     android:layout_gravity="center"
                     android:src="@drawable/dokter"
@@ -89,8 +93,10 @@
 
                 <ImageButton
                     android:id="@+id/btnRiwayat"
-                    android:layout_width="120dp"
+                    android:layout_width="match_parent"
                     android:layout_height="120dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="15dp"
                     android:layout_gravity="center"
                     android:background="@drawable/home_button"
                     android:layout_marginTop="20dp"
@@ -115,8 +121,10 @@
 
                 <ImageButton
                     android:id="@+id/btnAntrian"
-                    android:layout_width="120dp"
+                    android:layout_width="match_parent"
                     android:layout_height="120dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="20dp"
                     android:layout_gravity="center"
                     android:background="@drawable/home_button"
                     android:layout_marginTop="20dp"
@@ -134,8 +142,10 @@
 
                 <ImageButton
                     android:id="@+id/btnProfil"
-                    android:layout_width="120dp"
+                    android:layout_width="match_parent"
                     android:layout_height="120dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_gravity="center"
                     android:background="@drawable/home_button"
                     android:layout_marginTop="20dp"

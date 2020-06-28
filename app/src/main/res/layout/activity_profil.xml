@@ -335,6 +335,7 @@
                                 android:id="@+id/tvAlamat"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:paddingLeft="120dp"
                                 android:layout_alignParentRight="true"
                                 android:layout_gravity="right"
                                 android:text="Jl.Manggar 5"
