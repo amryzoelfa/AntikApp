@@ -15,8 +15,8 @@ public class ServerAPI {
     public static final String INSERT_GIGI = "http://192.168.43.34/CIANTIK/Api/insertGigi/";
     public static final String ANTRIAN_UMUM= "http://192.168.43.34/CIANTIK/Api/antrianUmum";
     public static final String ANTRIAN_GIGI= "http://192.168.43.34/CIANTIK/Api/antrianGigi";
-    public static final String JUMLAH_UMUM= "http://192.168.43.34/CIANTIK/Api/jumlahUmum";
-    public static final String JUMLAH_GIGI= "http://192.168.43.34/CIANTIK/Api/jumlahGigi";
+    public static final String JUMLAH_UMUM= "http://192.168.43.34/CIANTIK/Api/getJumum";
+    public static final String JUMLAH_GIGI= "http://192.168.43.34/CIANTIK/Api/getJGigi";
     public static final String LIST_GIGI= "http://192.168.43.34/CIANTIK/Api/listGigi";
     public static final String LIST_UMUM= "http://192.168.43.34/CIANTIK/Api/listUmum";
     //public static final String = "http://192.168.43.34/CIANTIK/Api/insertGigi";
