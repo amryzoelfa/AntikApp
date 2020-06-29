@@ -8,16 +8,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.iwars.mine.Util.AppController;
 import com.iwars.mine.Util.ServerAPI;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,10 +37,16 @@ public class AntrianActivity extends AppCompatActivity implements View.OnClickLi
 
     private String mIdUser;
 
+    private RequestQueue mQueue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_antrian);
+
+        mQueue = Volley.newRequestQueue(this);
+
+        //pd = new ProgressDialog(AntrianActivity.this);
 
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
@@ -43,6 +54,69 @@ public class AntrianActivity extends AppCompatActivity implements View.OnClickLi
         mIdUser = user.get(sessionManager.ID_USER);
 
         initControl();
+        loadTotalUmum();
+        loadTotalGigi();
+    }
+
+    private void loadTotalGigi() {
+        String url = ServerAPI.JUMLAH_GIGI;
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject data = response.getJSONObject(i);
+
+                        String totalGigi = data.getString("jumlah_ag");
+
+                        TextView tvTotalGigi = findViewById(R.id.jGigi);
+
+                        tvTotalGigi.setText(totalGigi);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        mQueue.add(jsonArrayRequest);
+    }
+
+    private void loadTotalUmum() {
+
+        String url = ServerAPI.JUMLAH_UMUM;
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject data = response.getJSONObject(i);
+
+                        String totalUmum = data.getString("jumlah_au");
+
+                        TextView tvTotalUmum = findViewById(R.id.jUmum);
+
+                        tvTotalUmum.setText(totalUmum);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        mQueue.add(jsonArrayRequest);
     }
 
     private void initControl() {
@@ -78,6 +152,7 @@ public class AntrianActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void insertGigi() {
+        pd = new ProgressDialog(this);
         pd.setMessage("Mohon Tunggu...");
         pd.setCancelable(false);
         pd.show();
@@ -118,6 +193,7 @@ public class AntrianActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void insertUmum() {
+        pd = new ProgressDialog(this);
         pd.setMessage("Mohon Tunggu...");
         pd.setCancelable(false);
         pd.show();

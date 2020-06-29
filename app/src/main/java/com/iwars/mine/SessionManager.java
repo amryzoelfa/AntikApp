@@ -98,6 +98,10 @@ public class SessionManager {
         return sharedPreferences.getString(NO_IDENTITAS, null);
     }
 
+//    public void setNoIdentitas(String NO_IDENTITAS){
+//
+//    }
+
     public String getNama() {
         return sharedPreferences.getString(NAMA, null);
     }

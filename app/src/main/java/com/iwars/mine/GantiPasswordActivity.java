@@ -3,6 +3,7 @@ package com.iwars.mine;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,13 +26,16 @@ import java.util.Map;
 
 public class GantiPasswordActivity extends AppCompatActivity {
 
-    String idUser = "1";
+    //String idUser = "1";
+    private String mIdUser;
 
     EditText textPassLama, textPassNew, textPassConfirm;
-    Button btnUpdate;
+    Button btnUpdate, btnBatal;
 
     ProgressDialog progressDialog;
     RequestQueue requestQueue;
+
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,11 @@ public class GantiPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ganti_password);
 
         initView();
+
+        sessionManager = new SessionManager(this);
+        sessionManager.checkLogin();
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        mIdUser = user.get(sessionManager.ID_USER);
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +58,13 @@ public class GantiPasswordActivity extends AppCompatActivity {
                 }
             }
         });
+        btnBatal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GantiPasswordActivity.this, ProfilActivity.class));
+                finish();
+            }
+        });
     }
 
     private void initView() {
@@ -56,6 +72,7 @@ public class GantiPasswordActivity extends AppCompatActivity {
         textPassNew = findViewById(R.id.pasnew);
         textPassConfirm = findViewById(R.id.conpas);
         btnUpdate = findViewById(R.id.buttonUpdatePassword);
+        btnBatal = findViewById(R.id.buttonBatal);
 
         progressDialog = new ProgressDialog(this);
         requestQueue = Volley.newRequestQueue(this);
@@ -91,7 +108,7 @@ public class GantiPasswordActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.show();
 
-        String url = ServerAPI.RUBAH_PASS;
+        String url = ServerAPI.RUBAH_PASS + mIdUser;
 
         StringRequest updateRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -119,7 +136,7 @@ public class GantiPasswordActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("id_user", idUser);
+                params.put("id_user", mIdUser);
                 params.put("password_lama", textPassLama.getText().toString().trim());
                 params.put("password_baru", textPassConfirm.getText().toString().trim());
                 return params;

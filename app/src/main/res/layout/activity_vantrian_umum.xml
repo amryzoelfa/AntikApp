@@ -8,6 +8,7 @@
     android:layout_marginTop="24dp"
     android:layout_marginEnd="24dp"
     android:layout_marginRight="24dp"
+    app:cardBackgroundColor="@color/umum"
     app:cardCornerRadius="20dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -45,8 +46,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginLeft="135dp"
+                android:textAlignment="center"
                 android:text=" A - "
                 android:textColor="@color/hitam"
                 android:textSize="35dp" />
@@ -56,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="0"
+                android:text="3"
                 android:textColor="@color/hitam"
                 android:textSize="35dp" />
         </LinearLayout>
@@ -65,7 +66,7 @@
             android:id="@+id/tanggal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12-12-1212"
+            android:text="2020-06-29"
             android:textColor="@color/hitam"
             android:textSize="18dp"
             android:textAlignment="center"
