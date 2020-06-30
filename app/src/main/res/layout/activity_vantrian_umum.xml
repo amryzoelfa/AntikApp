@@ -41,23 +41,24 @@
             android:layout_marginBottom="10dp"
             android:layout_gravity="center"
             android:background="@color/umum"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="135dp"
-                android:textAlignment="center"
-                android:text=" A - "
-                android:textColor="@color/hitam"
-                android:textSize="35dp" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="135dp"-->
+<!--                android:textAlignment="center"-->
+<!--                android:text=" A - "-->
+<!--                android:textColor="@color/hitam"-->
+<!--                android:textSize="35dp" />-->
 
             <TextView
                 android:id="@+id/antrianmku"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="3"
+                android:textAlignment="center"
+                android:text="0"
                 android:textColor="@color/hitam"
                 android:textSize="35dp" />
         </LinearLayout>
@@ -66,7 +67,7 @@
             android:id="@+id/tanggal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2020-06-29"
+            android:text="ini tanggal"
             android:textColor="@color/hitam"
             android:textSize="18dp"
             android:textAlignment="center"
@@ -89,7 +90,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="*Silahkan capture/screenshoot"
+            android:text="*Silahkan capture/screenshot"
             android:textColor="@color/hitam"
             android:layout_marginLeft="8dp"
             android:textStyle="italic"

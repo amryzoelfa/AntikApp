@@ -12,36 +12,43 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.iwars.mine.Model.ModelProfil;
 import com.iwars.mine.Model.ModelRiwayat;
+import com.iwars.mine.Util.ServerAPI;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
 
 public class ProfilActivity extends AppCompatActivity implements View.OnClickListener {
 
-    RecyclerView mRecyclerview;
-    RecyclerView.Adapter mAdapter;
-    RecyclerView.LayoutManager mManager;
-    List<ModelProfil> mItems;
-    ProgressDialog pd;
     SessionManager sessionManager;
     //String username, nama, id_user, id_akses, foto;
 
     private TextView id_user, no_identitas, nama, jenis_kelamin, ttl, no_hp, alamat;
     private Button editProfil, gantiPassword, logout;
     private ImageView foto;
-    //SessionManager sessionManager;
-
-    //private String mIdUser, mID, mNama, mJk, mTTL, mNo, mUsername, mAlamat, mFoto, URL_FOTO;
+    //private RequestQueue mQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
 
+        //mQueue = Volley.newRequestQueue(this);
+
         initControl();
+        //loadProfil();
 
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
@@ -54,7 +61,7 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
         String mAlamat = user.get(sessionManager.ALAMAT);
         String mNo = user.get(sessionManager.NO_HP);
         String mFoto = user.get(sessionManager.FOTO);
-        String URL_FOTO = "http://192.168.43.34/CIANTIK/assets/img/"+mFoto;
+        String URL_FOTO = "http://antik.mif-project.com/assets/img/"+mFoto;
 
         //set foto
         Glide.with(ProfilActivity.this)

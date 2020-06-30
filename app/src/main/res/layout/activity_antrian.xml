@@ -106,17 +106,17 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="POLI UMUM"
-                                    android:textSize="20sp"
                                     android:textColor="#fff"
                                     android:textStyle="bold" />
 
-<!--                                <TextView-->
-<!--                                    android:id="@+id/aUmum"-->
-<!--                                    android:layout_width="wrap_content"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:textColor="#fff"-->
-<!--                                    android:textSize="18sp"-->
-<!--                                    android:textStyle="bold" />-->
+                                <TextView
+                                    android:id="@+id/aUmum"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#fff"
+                                    android:text="A - 0"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
 
                             </LinearLayout>
 
@@ -217,18 +217,17 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="POLI GIGI"
-                                    android:textSize="20sp"
                                     android:textColor="#fff"
                                     android:textStyle="bold" />
 
-<!--                                <TextView-->
-<!--                                    android:id="@+id/aGigi"-->
-<!--                                    android:layout_width="wrap_content"-->
-<!--                                    android:layout_height="wrap_content"-->
-<!--                                    android:text="B-0"-->
-<!--                                    android:textColor="#fff"-->
-<!--                                    android:textSize="18sp"-->
-<!--                                    android:textStyle="bold" />-->
+                                <TextView
+                                    android:id="@+id/aGigi"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="B - 0"
+                                    android:textColor="#fff"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
 
                             </LinearLayout>
                             <LinearLayout

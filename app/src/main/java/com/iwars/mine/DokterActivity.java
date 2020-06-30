@@ -68,7 +68,7 @@ public class DokterActivity extends AppCompatActivity {
                             try {
                                 JSONObject data = response.getJSONObject(i);
                                 ModelDokter md = new ModelDokter();
-                                md.setFoto("http://192.168.43.34/CIANTIK/assets/img/" + data.getString("foto"));
+                                md.setFoto("http://antik.mif-project.com/assets/img/" + data.getString("foto"));
                                 md.setNama(data.getString("nama"));
                                 md.setJenis_kelamin(data.getString("jenis_kelamin"));
                                 md.setNo_hp(data.getString("no_hp"));

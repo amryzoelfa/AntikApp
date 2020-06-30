@@ -61,7 +61,7 @@ public class EditProfilActivity extends AppCompatActivity  {
         mAlamat = user.get(sessionManager.ALAMAT);
         mNo = user.get(sessionManager.NO_HP);
         mFoto = user.get(sessionManager.FOTO);
-        URL_FOTO = "http://192.168.43.34/CIANTIK/assets/img/"+mFoto;
+        URL_FOTO = "http://antik.mif-project.com/assets/img/"+mFoto;
 
         //set foto
         Glide.with(EditProfilActivity.this)

@@ -37,7 +37,7 @@ public class BerandaActivity extends AppCompatActivity implements View.OnClickLi
         HashMap<String, String> user = sessionManager.getUserDetail();
         String mNama = user.get(sessionManager.NAMA);
         String mFoto = user.get(sessionManager.FOTO);
-        String URL_FOTO = "http://192.168.43.34/CIANTIK/assets/img/"+mFoto;
+        String URL_FOTO = "http://antik.mif-project.com/assets/img/"+mFoto;
 
         //set nama dari session
         username.setText(mNama);
@@ -84,7 +84,6 @@ public class BerandaActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.btnProfil:
                 Intent profil = new Intent(BerandaActivity.this, ProfilActivity.class);
                 startActivity(profil);
-
                 break;
         }
     }

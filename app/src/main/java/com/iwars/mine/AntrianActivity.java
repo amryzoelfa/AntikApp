@@ -56,6 +56,68 @@ public class AntrianActivity extends AppCompatActivity implements View.OnClickLi
         initControl();
         loadTotalUmum();
         loadTotalGigi();
+        loadAntrianUmum();
+        loadAntrianGigi();
+    }
+
+    private void loadAntrianGigi() {
+        String url = ServerAPI.ANTRIAN_GIGI;
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject data = response.getJSONObject(i);
+
+                        String gigi = "B - " + data.getString("g");
+
+                        TextView tvAGigi = findViewById(R.id.aGigi);
+
+                        tvAGigi.setText(gigi);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        mQueue.add(jsonArrayRequest);
+    }
+
+    private void loadAntrianUmum() {
+        String url = ServerAPI.ANTRIAN_UMUM;
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject data = response.getJSONObject(i);
+
+                        String umum = "A - " + data.getString("u");
+
+                        TextView tvAUmum = findViewById(R.id.aUmum);
+
+                        tvAUmum.setText(umum);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        mQueue.add(jsonArrayRequest);
     }
 
     private void loadTotalGigi() {
